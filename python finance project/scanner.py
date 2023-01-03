@@ -1,7 +1,6 @@
 from polygon import RESTClient
 import config
 import pandas as pd
-from listTickers import listOfTickers
 import datetime
 
 
