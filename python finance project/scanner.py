@@ -2,18 +2,30 @@ from polygon import RESTClient
 import config
 import pandas as pd
 from listTickers import listOfTickers
+import datetime
 
 
 client = RESTClient(config.API_KEY)
-test= ['AAL','ZYNE','TSLA']
+test= ['AAL']
 list = []
-for ticker in listOfTickers:
-    list.append(client.get_daily_open_close_agg(ticker=ticker,date='2022-12-28'))
-print(list)
-'''
-previousClose = client.get_previous_close_agg(ticker='TSLA')
-df = pd.DataFrame(previousClose)
-df['date']= df['timestamp'].apply(lambda x: pd.to_datetime((x-3600000*5)*1000000))
-df = df.set_index('date')
-'''
 
+
+start_date = '2022-12-05'
+end_date = '2022-12-09'
+
+start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
+print((end_date - start_date).days)
+
+for day in range((end_date - start_date).days + 1):
+    current_day = start_date + datetime.timedelta(days=day)
+    current_day_str = current_day.strftime('%Y-%m-%d')
+    print(current_day_str)
+    for ticker in test:
+        list.append(client.get_daily_open_close_agg(ticker=ticker,date=current_day_str))
+
+
+list = pd.DataFrame(list)
+list = list.set_index('symbol')
+
+print(list)
