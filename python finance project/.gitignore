@@ -1,2 +1,5 @@
 # api_url
 config.py
+
+# cache
+_pycache_/
