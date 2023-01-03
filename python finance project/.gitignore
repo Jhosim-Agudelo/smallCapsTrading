@@ -2,4 +2,4 @@
 config.py
 
 # cache
-_pycache_/
+__pycache__/
