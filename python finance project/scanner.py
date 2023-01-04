@@ -7,18 +7,18 @@ import datetime
 client = RESTClient(config.API_KEY)
 
 tickers= pd.read_csv('tickersLt250M_copy.csv')
-tickers = list(tickers['ticker'])
+listofTickers = tickers['ticker'].to_list()
 list = []
 # choose the range date that you want to use
-start_date = '2022-01-01'
-end_date = '2022-01-30'
+start_date = '2022-01-03'
+end_date = '2022-01-07'
 
 start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
 end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
 #print((end_date - start_date).days)
 
 
-for ticker in tickers:
+for ticker in listofTickers:
     print('ticker: '+ ticker )
     for day in range((end_date - start_date).days + 1):
         current_day = start_date + datetime.timedelta(days=day)
