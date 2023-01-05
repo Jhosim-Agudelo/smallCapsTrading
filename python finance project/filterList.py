@@ -14,4 +14,5 @@ listTickersLt250M =[]
 for ticker in dflistOfTickersLt250M['ticker']:
     listTickersLt250M.append(ticker)
 
+
 print(listTickersLt250M)
