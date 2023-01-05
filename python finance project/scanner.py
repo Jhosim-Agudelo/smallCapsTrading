@@ -4,6 +4,7 @@ import pandas as pd
 import datetime
 
 
+
 client = RESTClient(config.API_KEY)
 
 tickers= pd.read_csv('tickersLt250M_copy.csv')
