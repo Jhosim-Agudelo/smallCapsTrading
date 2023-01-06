@@ -8,13 +8,13 @@ from filterList import listTickersLt250M
 client = RESTClient(config.API_KEY)
 
 
-test2 = ['AAL','TSLA','AAPL','ZTEK']
+test2 = ['ZTEK']
 
 
 list = []
 # choose the range date that you want to use
-start_date = '2022-11-01'
-end_date = '2022-11-30'
+start_date = '2022-10-01'
+end_date = '2022-10-31'
 
 start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
 end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
@@ -32,5 +32,5 @@ for stock in listTickersLt250M:
 
 df = pd.DataFrame(list)
 df = df.set_index('symbol')
-df.to_csv(start_date+'/'+end_date+'.csv')
+df.to_csv(current_day_str+'.csv')
 print(df)
