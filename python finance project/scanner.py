@@ -13,8 +13,8 @@ test2 = ['AAL','TSLA','AAPL','ZTEK']
 
 list = []
 # choose the range date that you want to use
-start_date = '2022-12-01'
-end_date = '2022-12-31'
+start_date = '2022-11-01'
+end_date = '2022-11-30'
 
 start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
 end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
@@ -29,8 +29,8 @@ for stock in listTickersLt250M:
         try:
             list.append(client.get_daily_open_close_agg(stock,date=current_day_str))
         except: print(stock,'No data on this day')
-RESTClient.get_hi
+
 df = pd.DataFrame(list)
 df = df.set_index('symbol')
-df.to_csv('december.csv')
+df.to_csv(start_date+'/'+end_date+'.csv')
 print(df)
