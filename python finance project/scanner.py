@@ -39,4 +39,4 @@ def scanner(listOftickers,start_date,end_date):
                 executor.submit(get_data, stock, current_day_str)   
     dataFrameSetup(current_day_str)
 
-scanner(listTickersLt250M,'2022-10-01','2022-10-31')
+scanner(listTickersLt250M,'2022-09-01','2022-09-30')
